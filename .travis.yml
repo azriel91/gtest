@@ -21,30 +21,29 @@ script:
 - cd biicode_project
 - bii find -um
 - bii cpp:build
-- ./bin/david_tinyxml2_xmltest
-- ./bin/david_gtest_fused-src_gtest_gtest_main
-- ./bin/david_gtest_test_gtest_color_test_
-- ./bin/david_gtest_test_gtest_no_test_unittest
-- ./bin/david_gtest_test_gtest_throw_on_failure_ex_test
-- ./bin/david_gtest_samples_sample10_unittest
-- ./bin/david_gtest_test_gtest_environment_test
-- ./bin/david_gtest_test_gtest_output_test_
-- ./bin/david_gtest_test_gtest_throw_on_failure_test_
-- ./bin/david_gtest_samples_sample9_unittest
-- ./bin/david_gtest_test_gtest_env_var_test_
-- ./bin/david_gtest_test_gtest_premature_exit_test
-- ./bin/david_gtest_test_gtest_uninitialized_test_
 - ./bin/david_gtest_src_gtest_main
-- ./bin/david_gtest_test_gtest_filter_unittest_
-- ./bin/david_gtest_test_gtest_repeat_test
-- ./bin/david_gtest_test_gtest-unittest-api_test
-- ./bin/david_gtest_test_gtest_break_on_failure_unittest_
-- ./bin/david_gtest_test_gtest-listener_test
-- ./bin/david_gtest_test_gtest_shuffle_test_
-- ./bin/david_gtest_test_gtest_xml_output_unittest_
-- ./bin/david_gtest_test_gtest_catch_exceptions_test_
-- ./bin/david_gtest_test_gtest_list_tests_unittest_
-- ./bin/david_gtest_test_gtest_stress_test
+- ./bin/david_gtest_samples_sample10_unittest
+- ls ./bin/david_gtest_fused-src_gtest_gtest_main
+- ls ./bin/david_gtest_test_gtest_color_test_
+- ls ./bin/david_gtest_test_gtest_no_test_unittest
+- ls ./bin/david_gtest_test_gtest_throw_on_failure_ex_test
+- ls ./bin/david_gtest_test_gtest_environment_test
+- ls ./bin/david_gtest_test_gtest_output_test_
+- ls ./bin/david_gtest_test_gtest_throw_on_failure_test_
+- ls ./bin/david_gtest_samples_sample9_unittest
+- ls ./bin/david_gtest_test_gtest_env_var_test_
+- ls ./bin/david_gtest_test_gtest_premature_exit_test
+- ls ./bin/david_gtest_test_gtest_uninitialized_test_
+- ls ./bin/david_gtest_test_gtest_filter_unittest_
+- ls ./bin/david_gtest_test_gtest_repeat_test
+- ls ./bin/david_gtest_test_gtest-unittest-api_test
+- ls ./bin/david_gtest_test_gtest_break_on_failure_unittest_
+- ls ./bin/david_gtest_test_gtest-listener_test
+- ls ./bin/david_gtest_test_gtest_shuffle_test_
+- ls ./bin/david_gtest_test_gtest_xml_output_unittest_
+- ls ./bin/david_gtest_test_gtest_catch_exceptions_test_
+- ls ./bin/david_gtest_test_gtest_list_tests_unittest_
+- ls ./bin/david_gtest_test_gtest_stress_test
 after_success:
 - bii user david -p $BII_DAVID_PASSWORD
 - bii publish
