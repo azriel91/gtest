@@ -1,4 +1,4 @@
-Google C++ Testing Framework
+Google C++ Testing Framework [![Build Status](https://travis-ci.org/davidsanfal/gtest.svg)](https://travis-ci.org/davidsanfal/gtest)
 ============================
 
 http://code.google.com/p/googletest/
