@@ -1,0 +1,53 @@
+language: cpp
+compiler:
+- gcc
+before_install:
+- sudo apt-get update -qq
+install:
+- wget http://www.biicode.com/downloads/latest/ubuntu32
+- mv ubuntu32 bii-ubuntu32.deb
+- (! sudo dpkg -i bii-ubuntu32.deb ) && sudo apt-get -f install
+- rm bii-ubuntu32.deb
+- wget http://www.cmake.org/files/v3.0/cmake-3.0.1-Linux-i386.tar.gz
+- tar -xzf cmake-3.0.1-Linux-i386.tar.gz
+- sudo cp -fR cmake-3.0.1-Linux-i386/* /usr
+- rm -rf cmake-3.0.1-Linux-i386
+- rm cmake-3.0.1-Linux-i386.tar.gz
+script:
+- cmake --version
+- bii init biicode_project
+- mkdir -p ./biicode_project/blocks/david/gtest
+- mv !(biicode_project) ./biicode_project/blocks/david/gtest
+- cd biicode_project
+- bii find -um
+- bii cpp:build
+- ./bin/david_tinyxml2_xmltest
+- ./bin/david_gtest_fused-src_gtest_gtest_main
+- ./bin/david_gtest_test_gtest_color_test_
+- ./bin/david_gtest_test_gtest_no_test_unittest
+- ./bin/david_gtest_test_gtest_throw_on_failure_ex_test
+- ./bin/david_gtest_samples_sample10_unittest
+- ./bin/david_gtest_test_gtest_environment_test
+- ./bin/david_gtest_test_gtest_output_test_
+- ./bin/david_gtest_test_gtest_throw_on_failure_test_
+- ./bin/david_gtest_samples_sample9_unittest
+- ./bin/david_gtest_test_gtest_env_var_test_
+- ./bin/david_gtest_test_gtest_premature_exit_test
+- ./bin/david_gtest_test_gtest_uninitialized_test_
+- ./bin/david_gtest_src_gtest_main
+- ./bin/david_gtest_test_gtest_filter_unittest_
+- ./bin/david_gtest_test_gtest_repeat_test
+- ./bin/david_gtest_test_gtest-unittest-api_test
+- ./bin/david_gtest_test_gtest_break_on_failure_unittest_
+- ./bin/david_gtest_test_gtest-listener_test
+- ./bin/david_gtest_test_gtest_shuffle_test_
+- ./bin/david_gtest_test_gtest_xml_output_unittest_
+- ./bin/david_gtest_test_gtest_catch_exceptions_test_
+- ./bin/david_gtest_test_gtest_list_tests_unittest_
+- ./bin/david_gtest_test_gtest_stress_test
+after_success:
+- bii user david -p $BII_DAVID_PASSWORD
+- bii publish
+env:
+  global:
+    secure: gbv1HUKCpPY0trldQuFogksy11MkGHNsXFoqutVgkKQ3atw1KZvXybEBVZ7hiGzhwaWFjJgtjhqFL7Tr8Ux9I6ktZbBPcsyJ4RiBFEvVYCILRZXu4OT4GcDRM06ro12uKLJq15iJUjs6M0WOoum2pTnN2Z+RUSpX204Cnx15URU=
