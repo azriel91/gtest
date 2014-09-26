@@ -1,3 +1,11 @@
+
+Forked to support biicode
+
+	Biicode repository: http://www.biicode.com/google/gtest
+	Github repository: https://github.com/davidsanfal/gtest
+
+
+
 Google C++ Testing Framework [![Build Status](https://travis-ci.org/davidsanfal/gtest.svg)](https://travis-ci.org/davidsanfal/gtest)
 ============================
 
