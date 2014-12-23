@@ -46,7 +46,7 @@ script:
 - ls ./bin/google_gtest_test_gtest_stress_test
 after_success:
 - bii user google -p $BII_GOOGLE_PASSWORD
-- bii publish
+# - bii publish
 env:
   global:
     secure: PKktr+B56gmTZtlmLn2g4lJj8PXRhokL+RqQti/MulFFVlSqqDvRnv1VSBggqm58MVpvY1ScWcsFthA1S8NC+bGmYukSy270JAyftgS6ur69uSyhc2DSBH/yLQ1IFxBi/6YXgv7v63PmN0u2cObHk2otFwHJtuslcE8Wh6uR4rQ=
