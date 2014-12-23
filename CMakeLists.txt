@@ -1,41 +1,44 @@
+########################################################################
+# CMake build script for Google Test.
+#
+# To run the tests for Google Test itself on Linux, use 'make test' or
+# ctest.  You can select which tests to run using 'ctest -R regex'.
+# For more options, run 'ctest --help'.
+
+# BUILD_SHARED_LIBS is a standard CMake variable, but we declare it here to
+# make it prominent in the GUI.
+option(BUILD_SHARED_LIBS "Build shared libraries (DLLs)." OFF)
+
+# When other libraries are using a shared version of runtime libraries,
+# Google Test also has to use one.
+option(
+  gtest_force_shared_crt
+  "Use shared (DLL) run-time lib even when Google Test is built as static lib."
+  OFF)
+
+option(gtest_build_tests "Build all of gtest's own tests." OFF)
+
+option(gtest_build_samples "Build gtest's sample programs." OFF)
+
+option(gtest_disable_pthreads "Disable uses of pthreads in gtest." OFF)
+
+# Defines pre_project_set_up_hermetic_build() and set_up_hermetic_build().
+include(cmake/hermetic_build.cmake OPTIONAL)
+
+if (COMMAND pre_project_set_up_hermetic_build)
+  pre_project_set_up_hermetic_build()
+endif()
+
 IF(BIICODE)
-  include(${CMAKE_HOME_DIRECTORY}/biicode.cmake)
   INIT_BIICODE_BLOCK()
+  SET(gtest_force_shared_crt ON CACHE BOOL "MyCoolOption" FORCE)
+  include(cmake/internal_utils.cmake)
+  config_compiler_and_linker()  # Defined in internal_utils.cmake.
   ADD_BIICODE_TARGETS()
   TARGET_INCLUDE_DIRECTORIES(${BII_LIB_TARGET} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
   TARGET_INCLUDE_DIRECTORIES(${BII_LIB_TARGET} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
   Set(GTEST_ENABLE_CATCH_EXCEPTIONS_ 0)
 ELSE()
-  ########################################################################
-  # CMake build script for Google Test.
-  #
-  # To run the tests for Google Test itself on Linux, use 'make test' or
-  # ctest.  You can select which tests to run using 'ctest -R regex'.
-  # For more options, run 'ctest --help'.
-
-  # BUILD_SHARED_LIBS is a standard CMake variable, but we declare it here to
-  # make it prominent in the GUI.
-  option(BUILD_SHARED_LIBS "Build shared libraries (DLLs)." OFF)
-
-  # When other libraries are using a shared version of runtime libraries,
-  # Google Test also has to use one.
-  option(
-    gtest_force_shared_crt
-    "Use shared (DLL) run-time lib even when Google Test is built as static lib."
-    OFF)
-
-  option(gtest_build_tests "Build all of gtest's own tests." OFF)
-
-  option(gtest_build_samples "Build gtest's sample programs." OFF)
-
-  option(gtest_disable_pthreads "Disable uses of pthreads in gtest." OFF)
-
-  # Defines pre_project_set_up_hermetic_build() and set_up_hermetic_build().
-  include(cmake/hermetic_build.cmake OPTIONAL)
-
-  if (COMMAND pre_project_set_up_hermetic_build)
-    pre_project_set_up_hermetic_build()
-  endif()
 
   ########################################################################
   #
