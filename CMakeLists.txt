@@ -42,6 +42,11 @@ IF(BIICODE)
   TARGET_INCLUDE_DIRECTORIES(${BII_LIB_TARGET} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
   TARGET_INCLUDE_DIRECTORIES(${BII_LIB_TARGET} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
   Set(GTEST_ENABLE_CATCH_EXCEPTIONS_ 0)
+
+  if(BUILD_SHARED_LIBS)
+    target_compile_definitions(${BII_LIB_TARGET} PRIVATE "-DGTEST_CREATE_SHARED_LIBRARY=1"
+                                                 INTERFACE "-DGTEST_LINKED_AS_SHARED_LIBRARY=1")
+  endif()
 ELSE()
 
   ########################################################################
