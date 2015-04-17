@@ -30,11 +30,15 @@ if (COMMAND pre_project_set_up_hermetic_build)
 endif()
 
 IF(BIICODE)
-  INIT_BIICODE_BLOCK()
   SET(gtest_force_shared_crt ON CACHE BOOL "MyCoolOption" FORCE)
   include(cmake/internal_utils.cmake)
   config_compiler_and_linker()  # Defined in internal_utils.cmake.
-  ADD_BIICODE_TARGETS()
+
+  if(UNIX)
+    SET(BII_LIB_DEPS ${BII_LIB_DEPS} pthread)
+  endif()
+
+  ADD_BII_TARGETS()
   TARGET_INCLUDE_DIRECTORIES(${BII_LIB_TARGET} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
   TARGET_INCLUDE_DIRECTORIES(${BII_LIB_TARGET} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
   Set(GTEST_ENABLE_CATCH_EXCEPTIONS_ 0)

@@ -26,3 +26,7 @@
 *.exe
 *.out
 *.app
+
+# Biicode simple layout directories
+/bii
+/bin
